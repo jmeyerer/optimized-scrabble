@@ -49,8 +49,8 @@ public class DictionaryEditor {
         Function takes input and checks that a given line (string from a csv) doesn't have over 50% of a single letter.
         Important so that we don't waste, for example, all (or a majority) of our A's on one word, leaving none for the
         rest of the scrabble board.
-
     */
+
     public static void halfLetterFilter(String line, BufferedReader br, ScrabbleBoard sb, PrintWriter printWriter) throws IOException {
         HashMap<String, Integer> currentWord = new HashMap<String, Integer>();
         String currentLetter;
@@ -85,6 +85,12 @@ public class DictionaryEditor {
         }
 
     }
+
+    /*
+        lengthPull() |
+        --------------
+        Pulls out all words of a specified length given an input and puts them into a specified output.
+    */
 
     public static void lengthPull(int length, String line, BufferedReader br, PrintWriter printWriter) throws IOException {
 
