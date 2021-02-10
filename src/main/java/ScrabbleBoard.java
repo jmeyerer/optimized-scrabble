@@ -8,53 +8,16 @@ import java.util.Map.*;
 
 public class ScrabbleBoard
 {
-    HashMap<String, Integer> letters;
-    HashMap<String, Integer> lettersLeft;
-
-    //enum values for alphabet, denoted by the letter with prefix '_' (underscore)
-    //all values are the index value of their place in the alphabet - 1 (for indexing's sake)
-    //there is a _blank tile of value 26, so it'll just be the last num in the array
-    public enum Alphabet {
-        _a(0, "a"),
-        _b(1, "a"),
-        _c(2, "a"),
-        _d(3, "a"),
-        _e(4, "a"),
-        _f(5, "a"),
-        _g(6, "a"),
-        _h(7, "a"),
-        _i(8, "a"),
-        _j(9, "a"),
-        _k(10, "a"),
-        _l(11, "a"),
-        _m(12, "a"),
-        _n(13, "a"),
-        _o(14, "a"),
-        _p(15, "a"),
-        _q(16, "a"),
-        _r(17, "a"),
-        _s(18, "a"),
-        _t(19, "a"),
-        _u(20, "a"),
-        _v(21, "a"),
-        _w(22, "a"),
-        _x(23, "a"),
-        _y(24, "a"),
-        _z(25, "a"),
-        _blank(Integer.MAX_VALUE, "");                                            //_blank for blank tile
-
-        private int val;
-        private String str;
-        public int getVal(){ return this.val; }
-        private Alphabet(int val, String str) {
-            this.val = val;
-            this.str = str;
-        }
-    }
-
+    public HashMap<String, Integer> letters;
+    public HashMap<String, Integer> lettersLeft;
+    public String[][] board;
 
     //was going to be hashmap but this works, stores values of letters left in "bag"
-    //27 slots instead of 26 to account for
+    //27 slots instead of 26 to account for blank space
+    /*
+        |CONSTRUCTOR|
+          -  Just populates the hashmaps and initializes the 2D String Array
+    */
 
     public ScrabbleBoard()
     {
@@ -88,7 +51,7 @@ public class ScrabbleBoard
         letters.put("z", 26);
         letters.put("", 27);
 
-        //Initializing # of each piece in a board
+        //Initializing amount of each piece in a board
         lettersLeft = new HashMap<String, Integer>();
         lettersLeft.put("a", 9);
         lettersLeft.put("b", 2);
@@ -118,11 +81,41 @@ public class ScrabbleBoard
         lettersLeft.put("z", 1);
         lettersLeft.put("", 2);
 
+        board  = new String[15][15];
+        for (int i = 0; i <= 14; i++)
+        {
+            for (int j = 0; j <= 14; j++)
+            {
+                board[i][j] = "-";
+            }
+        }
     }
 
+    /*
+       printBoard() |
+       --------------
+       Prints out a given board in it's current state.
+    */
 
-    public static void printBoard(ScrabbleBoard board) {
-        //Should print out a given board
+    public static void printBoard(String[][] input) {
+        String output = "";
+
+        System.out.println("******************************************************************");
+        System.out.println("*                                                                *");
+        for (int i = 0; i <= 14; i++)
+        {
+            for (int j = 0; j <= 14; j++)
+            {
+                output += input[i][j];
+                output += "  ";
+            }
+            System.out.println("*          " + output + "         *");
+            output = "";
+        }
+
+        System.out.println("*                                                                *");
+        System.out.println("******************************************************************");
+
 
     }
 
