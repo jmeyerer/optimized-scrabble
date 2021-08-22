@@ -1,0 +1,2 @@
+# About this project
+Optimized Scrabble is attempting to find out what the densest possible Scrabble board is. Whether that's a solid 10x10 block, or a 6x7 with random bits flying off, I want to know what it is. 
