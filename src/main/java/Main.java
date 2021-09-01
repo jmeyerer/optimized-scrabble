@@ -8,8 +8,9 @@ public class Main {
 
     public static void main(String args[]){
 
-        ScrabbleBoard sb = new ScrabbleBoard();
-        sb.printBoard(sb.board);
+        Scrabble scrabble = new Scrabble();
+        scrabble.populateBoard();
+        scrabble.mainBoard.printBoard(scrabble.mainBoard.board);
 
     }
 }

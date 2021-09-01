@@ -4,13 +4,13 @@ Date: 2 December 2020
  */
 
 import java.util.HashMap;
-import java.util.Map.*;
 
 public class ScrabbleBoard
 {
-    public HashMap<String, Integer> letters;
+    public HashMap<Integer, String> letters;
     public HashMap<String, Integer> lettersLeft;
     public String[][] board;
+    public int TOTAL_LEFT = 100;
 
     //was going to be hashmap but this works, stores values of letters left in "bag"
     //27 slots instead of 26 to account for blank space
@@ -22,34 +22,34 @@ public class ScrabbleBoard
     public ScrabbleBoard()
     {
         //Putting letter indexes into HashMap (plus blank space)
-        letters = new HashMap<String, Integer>();
-        letters.put("a", 1);
-        letters.put("b", 2);
-        letters.put("c", 3);
-        letters.put("d", 4);
-        letters.put("e", 5);
-        letters.put("f", 6);
-        letters.put("g", 7);
-        letters.put("h", 8);
-        letters.put("i", 9);
-        letters.put("j", 10);
-        letters.put("k", 11);
-        letters.put("l", 12);
-        letters.put("m", 13);
-        letters.put("n", 14);
-        letters.put("o", 15);
-        letters.put("p", 16);
-        letters.put("q", 17);
-        letters.put("r", 18);
-        letters.put("s", 19);
-        letters.put("t", 20);
-        letters.put("u", 21);
-        letters.put("v", 22);
-        letters.put("w", 23);
-        letters.put("x", 24);
-        letters.put("y", 25);
-        letters.put("z", 26);
-        letters.put("", 27);
+        letters = new HashMap<Integer, String>();
+        letters.put(1, "a");
+        letters.put(2, "b");
+        letters.put(3, "c");
+        letters.put(4, "d");
+        letters.put(5, "e");
+        letters.put(6, "f");
+        letters.put(7, "g");
+        letters.put(8, "h");
+        letters.put(9, "i");
+        letters.put(10, "j");
+        letters.put(11, "k");
+        letters.put(12, "l");
+        letters.put(13, "m");
+        letters.put(14, "n");
+        letters.put(15, "o");
+        letters.put(16, "p");
+        letters.put(17, "q");
+        letters.put(18, "r");
+        letters.put(19, "s");
+        letters.put(20, "t");
+        letters.put(21, "u");
+        letters.put(22, "v");
+        letters.put(23, "w");
+        letters.put(24, "x");
+        letters.put(25, "y");
+        letters.put(26, "z");
+        letters.put(27, "~");
 
         //Initializing amount of each piece in a board
         lettersLeft = new HashMap<String, Integer>();
@@ -79,7 +79,7 @@ public class ScrabbleBoard
         lettersLeft.put("x", 1);
         lettersLeft.put("y", 2);
         lettersLeft.put("z", 1);
-        lettersLeft.put("", 2);
+        lettersLeft.put("~", 2);
 
         board  = new String[15][15];
         for (int i = 0; i <= 14; i++)
@@ -97,7 +97,8 @@ public class ScrabbleBoard
        Prints out a given board in it's current state.
     */
 
-    public static void printBoard(String[][] input) {
+    public void printBoard(String[][] input) 
+    {
         String output = "";
 
         System.out.println("******************************************************************");
